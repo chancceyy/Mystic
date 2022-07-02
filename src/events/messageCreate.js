@@ -21,7 +21,20 @@ module.exports = {
                     message.member.roles.add('967504801619390464');
               }
               if (user.level === 10) {
-                    message.member.roles.add('')
+                    message.member.roles.add('967504798255554580')
+              }
+
+              if (user.level === 15) {
+                    message.member.roles.add('967504795852214362')
+              }
+              if (user.level === 20) {
+                    message.member.roles.add('967504792844894238')
+              }
+              if (user.level === 25) {
+                    message.member.roles.add('967504781327339571')
+              }
+              if (user.level === 50) {
+                    message.memeber.roles.add('992910130804969592')
               }
 
               const levelEmbed = new MessageEmbed()
