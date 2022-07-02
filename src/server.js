@@ -5,8 +5,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+const Levels = require("discord.js-leveling");
 
 const client = new Client({ intents: [ Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES ] });
+Levels.setURL("mongodb+srv://Chance:nuUe1RwO8yJ4TumH@cluster0.up18nsc.mongodb.net/?retryWrites=true&w=majority"); 
 
 client.commands = new Collection();
 const commands = [];
@@ -56,6 +58,8 @@ for (const file of eventFiles) {
 	}
 }
 
-
+module.exports = {
+    client
+}
 
 client.login(process.env.TOKEN)

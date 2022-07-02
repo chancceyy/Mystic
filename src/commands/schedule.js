@@ -3,8 +3,8 @@ const { MessageEmbed } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('event')
-        .setDescription('Send a message letting members know of an event')
+        .setName('schedule')
+        .setDescription('Send a message letting staff know of an event')
         .addStringOption(option =>
             option.setName('what')
                 .setDescription('What the event is')
@@ -28,7 +28,7 @@ module.exports = {
             const prize = interaction.options.getString('prize');
             
             const embed = new MessageEmbed()
-                .setTitle(`<:partypopper:968383344545001522> **__Event__** <:partypopper:968383344545001522>`)
+                .setTitle(`<:partypopper:968383344545001522> **__Schedule__** <:partypopper:968383344545001522>`)
                 .setColor('BLUE')
                 .setDescription(`
 <:gaming:968380770483834910> **What**:
@@ -44,6 +44,7 @@ module.exports = {
 \`${prize}\`
         `)    
                 
-            await interaction.reply({content: '<@&967514477010501633>', embeds: [embed]})
+            await interaction.reply({ embeds: [embed]})
+            return interaction.followUp({ content: '<@&967832300979122216>' })
         }
 }
