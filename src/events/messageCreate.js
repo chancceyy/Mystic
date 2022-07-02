@@ -39,7 +39,7 @@ module.exports = {
 
               const levelEmbed = new MessageEmbed()
               .setTitle('New Level!')
-              .setDescription(`**GG** ${message.author}, you just leveled up to level **${user.level + 1}**! <:partypopper:968383344545001522>`)
+              .setDescription(`**GG** ${message.author}, you just leveled up to level **${user.level}**! <:partypopper:968383344545001522>`)
               .setColor('GREEN')
       
               const channel = client.channels.cache.get('967495791503618130');
