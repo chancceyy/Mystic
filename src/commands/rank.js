@@ -11,6 +11,11 @@ module.exports = {
 
             if (!user) return interaction.reply({ content: "Seems like this user has not earned any xp so far." }); // If there isnt such user in the database, we send a message in general.
 
-            return interaction.reply({ content: `> **${interaction.user.tag}** is currently level ${(user.level)} (${user.xp} / ${Levels.xpFor(parseInt(user.level) + 1)}) .`})
+            const embed = new MessageEmbed()
+                .setTitle(`${interaction.user.tag}'s Level`)
+                .setDescription(`**${interaction.user.username}** is currently level ${(user.level)} (${user.xp} / ${Levels.xpFor(parseInt(user.level) + 1)})`)
+                .setColor('BLUE')
+                .setThumbnail(interaction.user.avatarURL())
+            return interaction.reply({ embeds: [embed] })
         }
 }

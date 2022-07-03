@@ -43,7 +43,7 @@ module.exports = {
               .setColor('GREEN')
       
               const channel = client.channels.cache.get('967495791503618130');
-              await channel.send({ content: `${message.author}`, embeds: [levelEmbed] });
+              return channel.send({ content: `${message.author}`, embeds: [levelEmbed] });
         }
     }
 }
