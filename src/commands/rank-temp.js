@@ -5,20 +5,25 @@ const canvacord = require('canvacord')
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('rank')
-        .setDescription('Look up ur level'),
+        .setDescription('Look up ur level')
+        .addUserOption(option =>
+            option.setName('user')
+                    .setDescription('Search a user')),
         async execute(interaction, client) {
-            const user = await Levels.fetch(interaction.user.id, interaction.guild.id, true); 
+            const member = interaction.options.getUser('user') || interaction.user;
+
+            const user = await Levels.fetch(member.id, interaction.guild.id, true); 
+            if (!user) return interaction.reply({ content: "Seems like this user has not earned any xp so far."})
 
             const rank = new canvacord.Rank()
-            .setAvatar(interaction.user.displayAvatarURL({ format: "png", dynamic: false }))
+            .setAvatar(member.displayAvatarURL({ format: "png", dynamic: false }))
             .setCurrentXP(user.xp)
             .setRequiredXP(Levels.xpFor(parseInt(user.level) + 1))
             .setLevel(user.level)
             .setRank(user.position)
             .setProgressBar("BLUE")
-            .setUsername(interaction.user.username)
-            .setDiscriminator(interaction.user.discriminator);
-
+            .setUsername(member.username)
+            .setDiscriminator(member. discriminator);
 
         rank.build()
             .then(data => {
